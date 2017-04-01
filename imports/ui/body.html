@@ -1,0 +1,87 @@
+<body>
+  <div class="mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+          <label class="mdl-button mdl-js-button mdl-button--icon" 
+            for="fixed-header-drawer-exp">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">CMS</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Pest Clinic</a>
+        <a class="mdl-navigation__link" href="">Pest Library</a>
+        <a class="mdl-navigation__link" href="">Diseases Library</a>
+        <a class="mdl-navigation__link" href="">Pest Identification</a>
+        <a class="mdl-navigation__link" href="">Disease Identification</a>
+        <a class="mdl-navigation__link" href="">Pest Monitor</a>
+      </nav>
+    </div>
+    
+    <!-- Page content -->
+    <div class="container">
+        <h1>Banana Diseases ({{incompleteCount}})</h1>
+
+        <!-- <label class="hide-completed">
+          <input type="checkbox" />
+          Hide Completed Tasks
+        </label> -->
+
+        {{> loginButtons}}
+
+        {{#if currentUser}}
+          <form class="add-disease">
+            <input type="text" name="name" placeholder="Name" />
+            <input type="text" name="description" placeholder="Description" />
+            <button class="add"> Submit </button>
+          </form>
+        {{/if}}
+      
+      <div width="100%">
+        <div class="demo-list-action mdl-list"  style="margin-left:auto; margin-right:auto;">
+          <ul>
+            {{#each diseases}}
+              {{> disease}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+
+      <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">Allow data collection?</h4>
+        <div class="mdl-dialog__content">
+          <p>
+            Allowing us to collect data will let us get you the information you want faster.
+          </p>
+        </div>
+        <div class="mdl-dialog__actions">
+          <button type="button" class="mdl-button">Agree</button>
+          <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+      </dialog>
+      <script>
+        var dialog = document.querySelector('dialog');
+        var showDialogButton = document.querySelector('.show-dialog');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+      </script>
+
+    </div>
+
+  </div>
+</body>
