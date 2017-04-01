@@ -1,16 +1,10 @@
 <body>
-  <div class="mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <div class="mdl-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <div class="mdl-layout-spacer"></div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
-          <label class="mdl-button mdl-js-button mdl-button--icon" 
-            for="fixed-header-drawer-exp">
-            <i class="material-icons">search</i>
-          </label>
-          <div class="mdl-textfield__expandable-holder">
-            <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp">
-          </div>
+        <div id="login-buttons" class="login-buttons-dropdown-align-right">
+          {{> loginButtons}}
         </div>
       </div>
     </header>
@@ -19,7 +13,7 @@
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="">Pest Clinic</a>
         <a class="mdl-navigation__link" href="">Pest Library</a>
-        <a class="mdl-navigation__link" href="">Diseases Library</a>
+        <a class="mdl-navigation__link" href="">Disease Library</a>
         <a class="mdl-navigation__link" href="">Pest Identification</a>
         <a class="mdl-navigation__link" href="">Disease Identification</a>
         <a class="mdl-navigation__link" href="">Pest Monitor</a>
@@ -27,18 +21,16 @@
     </div>
     
     <!-- Page content -->
-    <div class="container">
-        <h1>Banana Diseases ({{incompleteCount}})</h1>
+    <div class="mdl-layout__content">
+        <h2>Banana Diseases ({{incompleteCount}})</h2>
 
         <!-- <label class="hide-completed">
           <input type="checkbox" />
           Hide Completed Tasks
         </label> -->
 
-        {{> loginButtons}}
-
         {{#if currentUser}}
-          <form class="add-disease">
+          <form class="add-disease" style="margin-left: 3%">
             <input type="text" name="name" placeholder="Name" />
             <input type="text" name="description" placeholder="Description" />
             <button class="add"> Submit </button>
